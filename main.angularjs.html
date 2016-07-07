@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Keep</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/mlabhelper.angularjs.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    
+</head>
+
+<body ng-controller="ctr_keep", ng-app='app_keep' ng-cloak=''>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="jumbotron">
+                    <h1>Keep</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <form class="form-horizontal">
+                    <div class="form-group form-group-md">
+                        <label class="col-md-2 control-label" >mlab.com key: </label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="apiKey" placeholder="apiKey" ng-model="apiKey">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="button" value="set" id="set" ng-click="setApikey()" class="btn btn-primary btn-md">
+                        </div>
+                    </div>
+                </form>                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <form class="form-horizontal">
+                    <div class="form-group form-group-md">
+                        <label class="col-md-2 control-label">search keyword: </label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="searchKeyword" placeholder="search keyword..." ng-model="searchKeyword"
+                                   ng-keyup="$event.keyCode == 13 ? searchMemo() : null",>                            
+                        </div>                
+                        <div class="col-md-2">
+                            <input type="button" value="Search" id="Search" ng-click="searchMemo()" class="btn btn-primary btn-md">
+                        </div>
+                    </div>                    
+                </form>                
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <form class="form-horizontal">
+                    <div class="form-group form-group-md">
+                        <label class="col-md-2 control-label" >title: </label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" id="selectedTitle" ng-model="selectedTitle">
+                            <input type="text" id="selectedId" style='display:none;' ng-model="selectedId">
+                        </div>                        
+                    </div>
+                </form>                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <form class="form-horizontal">
+                    <div class="form-group form-group-md">
+                        <textarea rows="5" cols="50" id="selectedContents" class="form-control" rows="3" ng-model="selectedContents"></textarea>
+                    </div>
+                </form>                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <form class="form-horizontal">
+                    <div class="form-group form-group-md">
+                        <input type="button" value="new" class="btn btn-info btn-md" ng-click="newMemo()">
+                        <input type="button" value="add" ng-click="addMemo()" class="btn btn-primary btn-md" id="addButton" ng-show="newBool">
+                        <input type="button" value="update" ng-click="updateMemo()" class="btn btn-primary btn-md" id="updateButton" ng-hide="newBool">
+                        <input type="button" value="delete" ng-click="deleteMemo()" class="btn btn-danger btn-md" id="deleteButton" ng-hide="newBool">                        
+                    </div>
+                </form>                
+            </div>
+        </div>
+        
+        <p>
+        
+        <p>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="table-responsive">
+                    <table class="table mytable">
+                        <thead>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Date</th>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in tableData", style="cursor:pointer", ng-click='selectMemo($index)'>
+                                <td>{{$index + 1}}</td>
+                                <td>{{item.title}}</td>
+                                <td>{{item.reg_date.$date}}</td>
+                            </tr>
+                        </tbody>
+                    </table>            
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.angularjs.js"></script>            
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.0.0.js" 
+        integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=" 
+        crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+    <script src="js/mlabhelper.js"></script>
+</head>
+
+<body>
+    <label>keep</label>
+    <p>
+    <label>mlab api key: </label>
+    <input type="text" id="apiKey">
+    <input type="button" value="set" id="set" onclick="setApikey()">
+    <p>
+    <label>search keyword: </label>
+    <input type="text" id="searchKeyword">
+    <input type="button" value="Search" id="Search" onclick="searchMemo()">
+    <p>
+    <label>title: </label>
+    <input type="text" id="selectedTitle">
+    <input type="text" id="selectedId" style='display:none;'>
+    <p>
+    <textarea rows="4" cols="50" id="selectedContents"></textarea>
+    <p>
+    <input type="button" value="new" onclick="newMemo()">
+    <input type="button" value="add" onclick="addMemo()" id="addButton">
+    <input type="button" value="update" onclick="updateMemo()" id="updateButton" >
+    <input type="button" value="delete" onclick="deleteMemo()" id="deleteButton" >
+    <p>
+    <div class="table-responsive">
+        <talbe>
+        <div id="dynamicTable">
+        </talbe>
+    </div>        
+</body>
+
+</html>
